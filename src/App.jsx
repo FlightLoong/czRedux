@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 
-class Counter extends Component {
+// 组织容器组件
+import CounterContainer from './containers/CountContainers'
+
+class App extends Component {
   constructor () {
     super()
 
@@ -9,12 +12,10 @@ class Counter extends Component {
   render () {
     return (
       <div>
-        <p>{this.props.value}</p>
-        <button onClick={this.props.add}>+</button>&nbsp;&nbsp;
-        <button onClick={this.props.sub}>-</button>
+        <CounterContainer />
       </div>
     )
   }
 }
 
-export default Counter
+export default App
