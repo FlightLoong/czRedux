@@ -1,18 +1,16 @@
 import React, { Component } from 'react'
-
-// 组织容器组件
-import CounterContainer from './containers/CountContainers'
+import Cart from './shopCar/containers/CartContainers'
+import Products from './shopCar/containers/ProductsContainers'
 
 class App extends Component {
-  constructor () {
-    super()
-
-    this.state = {}
-  }
   render () {
     return (
       <div>
-        <CounterContainer />
+        <h3>Redux 购物车</h3>
+        <hr />
+        <Products />
+        <hr />
+        <Cart />
       </div>
     )
   }
