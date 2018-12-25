@@ -4,7 +4,12 @@ const initialState = {
 }
 
 const all = (state = initialState.all, action) => {
-  return state
+  switch (action.type) {
+    case 'RECIVE_PRODUCTS':
+      return action.products
+    default:
+      return state
+  }
 }
 
 export default (state = initialState, action) => {
