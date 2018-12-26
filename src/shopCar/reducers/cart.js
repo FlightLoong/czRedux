@@ -18,14 +18,24 @@ const items = (state = initialState.items, action) => {
           quantity: 1
         }]
       }
+    case 'SET_ITEMS':
+      return action.items
     default:
       return state
   }
 }
 
 export default (state = initialState, action) => {
-  return {
-    items: items(state.items, action),
-    checkoutStatus: state.checkoutStatus
+  switch (action.type) {
+    case 'SET_CHECKOUT_STATUS':
+      return {
+        ...state,
+        checkoutStatus: action.status
+      }
+    default:
+      return {
+        items: items(state.items, action),
+        checkoutStatus: state.checkoutStatus
+      }
   }
 }

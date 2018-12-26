@@ -16,6 +16,25 @@ export const getAllProducts = () => dispath => {
   })
 }
 
+export const setCheckoutStatus = status => ({
+  type: 'SET_CHECKOUT_STATUS',
+  status
+})
+
+export const setCartItems = items => ({
+  type: 'SET_ITEMS',
+  items
+})
+
+export const checkout = (products) => dispath => {
+  // 备份购物车数据
+  const saveCartProducts = [...products]
+  // 清空结算状态
+  dispath(setCheckoutStatus(null))
+  // 清空购物车
+  dispath(setCartItems([]))
+}
+
 export const handleAddToCart = product => dispath => {
   dispath(addToCart)
 }

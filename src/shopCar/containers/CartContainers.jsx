@@ -1,5 +1,6 @@
 import { connect } from 'react-redux'
 import Cart from '../components/Cart'
+import { checkout } from '../actions/index'
 
 const getCartProducts = state => {
   return state.cart.items.map(cartItem => {
@@ -13,14 +14,25 @@ const getCartProducts = state => {
   })
 }
 
+const getTotalPrice = state => {
+  return getCartProducts(state).reduce((total, prod) => {
+    return total + prod.price * prod.quantity
+  }, 0)
+}
+
 function mapStateToProps (state) {
   return {
-    cartProducts: getCartProducts(state)
+    cartProducts: getCartProducts(state),
+    totalPrice: getTotalPrice(state)
   }
 }
 
-function mapDispatchToProps (dispatch) {
-  return {}
+// function mapDispatchToProps (dispatch) {
+//   checkout
+// }
+
+const mapDispatchToProps = {
+  checkout
 }
 
 const CartContainer = connect(
